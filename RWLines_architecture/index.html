@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="css/leaflet-search.css">
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="js/leaflet-search.js"></script>
+        <script src="data/Annexation_History_Polygon_1.js"></script>
+        <script src="data/historic_edmontonRWLines_buildings_2.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[53.5187383239481,-113.53571407310842],[53.56145967402453,-113.44237492689129]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        map.createPane('pane_OSMStandard_0');
+        map.getPane('pane_OSMStandard_0').style.zIndex = 400;
+        var layer_OSMStandard_0 = L.tileLayer('http://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            pane: 'pane_OSMStandard_0',
+            opacity: 1.0,
+            attribution: '<a href="https://www.openstreetmap.org/copyright">© OpenStreetMap contributors, CC-BY-SA</a>',
+            minZoom: 1,
+            maxZoom: 28,
+            minNativeZoom: 0,
+            maxNativeZoom: 19
+        });
+        layer_OSMStandard_0;
+        map.addLayer(layer_OSMStandard_0);
+        function pop_Annexation_History_Polygon_1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ANNEX_ID'] !== null ? autolinker.link(feature.properties['ANNEX_ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['YEAR'] !== null ? autolinker.link(feature.properties['YEAR'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ANNEX_DATE'] !== null ? autolinker.link(feature.properties['ANNEX_DATE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['INFO'] !== null ? autolinker.link(feature.properties['INFO'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['AREA_KM2'] !== null ? autolinker.link(feature.properties['AREA_KM2'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ORDER_NO'] !== null ? autolinker.link(feature.properties['ORDER_NO'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Annexation_History_Polygon_1_0() {
+            return {
+                pane: 'pane_Annexation_History_Polygon_1',
+                opacity: 1,
+                color: 'rgba(228,26,28,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 4.0, 
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Annexation_History_Polygon_1');
+        map.getPane('pane_Annexation_History_Polygon_1').style.zIndex = 401;
+        map.getPane('pane_Annexation_History_Polygon_1').style['mix-blend-mode'] = 'normal';
+        var layer_Annexation_History_Polygon_1 = new L.geoJson(json_Annexation_History_Polygon_1, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Annexation_History_Polygon_1',
+            layerName: 'layer_Annexation_History_Polygon_1',
+            pane: 'pane_Annexation_History_Polygon_1',
+            onEachFeature: pop_Annexation_History_Polygon_1,
+            style: style_Annexation_History_Polygon_1_0,
+        });
+        bounds_group.addLayer(layer_Annexation_History_Polygon_1);
+        map.addLayer(layer_Annexation_History_Polygon_1);
+        function pop_historic_edmontonRWLines_buildings_2(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Neighbourhood'] !== null ? autolinker.link(feature.properties['Neighbourhood'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Name of Historic Resource'] !== null ? autolinker.link(feature.properties['Name of Historic Resource'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Building Address'] !== null ? autolinker.link(feature.properties['Building Address'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Construction Completion Year'] !== null ? autolinker.link(feature.properties['Construction Completion Year'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Warning Type 1'] !== null ? autolinker.link(feature.properties['Warning Type 1'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Warning Type 2'] !== null ? autolinker.link(feature.properties['Warning Type 2'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Statement of Significance'] !== null ? autolinker.link(feature.properties['Statement of Significance'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Latitude'] !== null ? autolinker.link(feature.properties['Latitude'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Longitude'] !== null ? autolinker.link(feature.properties['Longitude'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Location'] !== null ? autolinker.link(feature.properties['Location'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_historic_edmontonRWLines_buildings_2_0() {
+            return {
+                pane: 'pane_historic_edmontonRWLines_buildings_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(213,180,60,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_historic_edmontonRWLines_buildings_2');
+        map.getPane('pane_historic_edmontonRWLines_buildings_2').style.zIndex = 402;
+        map.getPane('pane_historic_edmontonRWLines_buildings_2').style['mix-blend-mode'] = 'normal';
+        var layer_historic_edmontonRWLines_buildings_2 = new L.geoJson(json_historic_edmontonRWLines_buildings_2, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_historic_edmontonRWLines_buildings_2',
+            layerName: 'layer_historic_edmontonRWLines_buildings_2',
+            pane: 'pane_historic_edmontonRWLines_buildings_2',
+            onEachFeature: pop_historic_edmontonRWLines_buildings_2,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_historic_edmontonRWLines_buildings_2_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_historic_edmontonRWLines_buildings_2);
+        map.addLayer(layer_historic_edmontonRWLines_buildings_2);
+        var baseMaps = {};
+        L.control.layers(baseMaps,{'<img src="legend/historic_edmontonRWLines_buildings_2.png" /> historic_edmonton RWLines_buildings': layer_historic_edmontonRWLines_buildings_2,'<img src="legend/Annexation_History_Polygon_1.png" /> Annexation_History_Polygon': layer_Annexation_History_Polygon_1,"OSM Standard": layer_OSMStandard_0,}).addTo(map);
+        setBounds();
+        map.addControl(new L.Control.Search({
+            layer: layer_historic_edmontonRWLines_buildings_2,
+            initial: false,
+            hideMarkerOnCollapse: true,
+            propertyName: 'Name of Historic Resource'}));
+        document.getElementsByClassName('search-button')[0].className +=
+         ' fa fa-binoculars';
+        </script>
+    </body>
+</html>
