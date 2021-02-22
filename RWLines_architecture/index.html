@@ -8,7 +8,7 @@
         <meta name="apple-mobile-web-app-capable" content="yes">
         <link rel="stylesheet" href="css/leaflet.css">
         <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
-        <link rel="stylesheet" href="css/leaflet-search.css">
+        <link rel="stylesheet" href="css/leaflet-control-geocoder.Geocoder.css">
         <style>
         html, body, #map {
             width: 100%;
@@ -24,6 +24,7 @@
         </div>
         <script src="js/qgis2web_expressions.js"></script>
         <script src="js/leaflet.js"></script>
+        <script src="js/multi-style-layer.js"></script>
         <script src="js/leaflet.rotatedMarker.js"></script>
         <script src="js/leaflet.pattern.js"></script>
         <script src="js/leaflet-hash.js"></script>
@@ -31,84 +32,55 @@
         <script src="js/rbush.min.js"></script>
         <script src="js/labelgun.min.js"></script>
         <script src="js/labels.js"></script>
-        <script src="js/leaflet-search.js"></script>
-        <script src="data/Annexation_History_Polygon_1.js"></script>
-        <script src="data/historic_edmontonRWLines_buildings_2.js"></script>
+        <script src="js/leaflet-control-geocoder.Geocoder.js"></script>
+        <script src="js/proj4.js"></script>
+        <script src="js/proj4leaflet.js"></script>
+        <script src="data/historic_edmontonRWLines_buildings_3.js"></script>
+        <script src="data/Annexation_History_Polygon_4.js"></script>
         <script>
+        var crs = new L.Proj.CRS('EPSG:3395', '+proj=merc +lon_0=0 +k=1 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs', {
+            resolutions: [2800, 1400, 700, 350, 175, 84, 42, 21, 11.2, 5.6, 2.8, 1.4, 0.7, 0.35, 0.14, 0.07],
+        });
         var map = L.map('map', {
+            crs: crs,
+            continuousWorld: false,
+            worldCopyJump: false, 
             zoomControl:true, maxZoom:28, minZoom:1
-        }).fitBounds([[53.5187383239481,-113.53571407310842],[53.56145967402453,-113.44237492689129]]);
+        }).fitBounds([[53.48083373882144,-113.70760759053746],[53.66007738135272,-113.30116933181421]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
         var bounds_group = new L.featureGroup([]);
         function setBounds() {
         }
-        map.createPane('pane_OSMStandard_0');
-        map.getPane('pane_OSMStandard_0').style.zIndex = 400;
-        var layer_OSMStandard_0 = L.tileLayer('http://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            pane: 'pane_OSMStandard_0',
-            opacity: 1.0,
-            attribution: '<a href="https://www.openstreetmap.org/copyright">© OpenStreetMap contributors, CC-BY-SA</a>',
-            minZoom: 1,
-            maxZoom: 28,
-            minNativeZoom: 0,
-            maxNativeZoom: 19
-        });
-        layer_OSMStandard_0;
-        map.addLayer(layer_OSMStandard_0);
-        function pop_Annexation_History_Polygon_1(feature, layer) {
-            var popupContent = '<table>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['ANNEX_ID'] !== null ? autolinker.link(feature.properties['ANNEX_ID'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['YEAR'] !== null ? autolinker.link(feature.properties['YEAR'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['ANNEX_DATE'] !== null ? autolinker.link(feature.properties['ANNEX_DATE'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['INFO'] !== null ? autolinker.link(feature.properties['INFO'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['AREA_KM2'] !== null ? autolinker.link(feature.properties['AREA_KM2'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['ORDER_NO'] !== null ? autolinker.link(feature.properties['ORDER_NO'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
-        }
-
-        function style_Annexation_History_Polygon_1_0() {
-            return {
-                pane: 'pane_Annexation_History_Polygon_1',
-                opacity: 1,
-                color: 'rgba(228,26,28,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 4.0, 
-                fillOpacity: 0,
-                interactive: true,
-            }
-        }
-        map.createPane('pane_Annexation_History_Polygon_1');
-        map.getPane('pane_Annexation_History_Polygon_1').style.zIndex = 401;
-        map.getPane('pane_Annexation_History_Polygon_1').style['mix-blend-mode'] = 'normal';
-        var layer_Annexation_History_Polygon_1 = new L.geoJson(json_Annexation_History_Polygon_1, {
-            attribution: '',
-            interactive: true,
-            dataVar: 'json_Annexation_History_Polygon_1',
-            layerName: 'layer_Annexation_History_Polygon_1',
-            pane: 'pane_Annexation_History_Polygon_1',
-            onEachFeature: pop_Annexation_History_Polygon_1,
-            style: style_Annexation_History_Polygon_1_0,
-        });
-        bounds_group.addLayer(layer_Annexation_History_Polygon_1);
-        map.addLayer(layer_Annexation_History_Polygon_1);
-        function pop_historic_edmontonRWLines_buildings_2(feature, layer) {
+        map.createPane('pane_Edmonton_Sectional_315_1920_worldmerc_30mpx_crop_0');
+        map.getPane('pane_Edmonton_Sectional_315_1920_worldmerc_30mpx_crop_0').style.zIndex = 400;
+        var img_Edmonton_Sectional_315_1920_worldmerc_30mpx_crop_0 = 'data/Edmonton_Sectional_315_1920_worldmerc_30mpx_crop_0.png';
+        var img_bounds_Edmonton_Sectional_315_1920_worldmerc_30mpx_crop_0 = [[53.387393393793076,-113.8752503390536],[53.72390046051945,-113.11231116825108]];
+        var layer_Edmonton_Sectional_315_1920_worldmerc_30mpx_crop_0 = new L.imageOverlay(img_Edmonton_Sectional_315_1920_worldmerc_30mpx_crop_0,
+                                              img_bounds_Edmonton_Sectional_315_1920_worldmerc_30mpx_crop_0,
+                                              {pane: 'pane_Edmonton_Sectional_315_1920_worldmerc_30mpx_crop_0'});
+        bounds_group.addLayer(layer_Edmonton_Sectional_315_1920_worldmerc_30mpx_crop_0);
+        map.addLayer(layer_Edmonton_Sectional_315_1920_worldmerc_30mpx_crop_0);
+        map.createPane('pane_EdmontonStrathcona_1907_worldmerc_10mpx_1');
+        map.getPane('pane_EdmontonStrathcona_1907_worldmerc_10mpx_1').style.zIndex = 401;
+        var img_EdmontonStrathcona_1907_worldmerc_10mpx_1 = 'data/EdmontonStrathcona_1907_worldmerc_10mpx_1.png';
+        var img_bounds_EdmontonStrathcona_1907_worldmerc_10mpx_1 = [[53.492034931246586,-113.69793048913928],[53.64892082803643,-113.3108464332123]];
+        var layer_EdmontonStrathcona_1907_worldmerc_10mpx_1 = new L.imageOverlay(img_EdmontonStrathcona_1907_worldmerc_10mpx_1,
+                                              img_bounds_EdmontonStrathcona_1907_worldmerc_10mpx_1,
+                                              {pane: 'pane_EdmontonStrathcona_1907_worldmerc_10mpx_1'});
+        bounds_group.addLayer(layer_EdmontonStrathcona_1907_worldmerc_10mpx_1);
+        map.addLayer(layer_EdmontonStrathcona_1907_worldmerc_10mpx_1);
+        map.createPane('pane_Plan_Edmonton_Settlement_1882_worldmerc_10mpx_2');
+        map.getPane('pane_Plan_Edmonton_Settlement_1882_worldmerc_10mpx_2').style.zIndex = 402;
+        var img_Plan_Edmonton_Settlement_1882_worldmerc_10mpx_2 = 'data/Plan_Edmonton_Settlement_1882_worldmerc_10mpx_2.png';
+        var img_bounds_Plan_Edmonton_Settlement_1882_worldmerc_10mpx_2 = [[53.5017032278701,-113.5652950342447],[53.58052203668661,-113.37413354178422]];
+        var layer_Plan_Edmonton_Settlement_1882_worldmerc_10mpx_2 = new L.imageOverlay(img_Plan_Edmonton_Settlement_1882_worldmerc_10mpx_2,
+                                              img_bounds_Plan_Edmonton_Settlement_1882_worldmerc_10mpx_2,
+                                              {pane: 'pane_Plan_Edmonton_Settlement_1882_worldmerc_10mpx_2'});
+        bounds_group.addLayer(layer_Plan_Edmonton_Settlement_1882_worldmerc_10mpx_2);
+        map.addLayer(layer_Plan_Edmonton_Settlement_1882_worldmerc_10mpx_2);
+        function pop_historic_edmontonRWLines_buildings_3(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
@@ -147,10 +119,10 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_historic_edmontonRWLines_buildings_2_0() {
+        function style_historic_edmontonRWLines_buildings_3_0() {
             return {
-                pane: 'pane_historic_edmontonRWLines_buildings_2',
-                radius: 4.0,
+                pane: 'pane_historic_edmontonRWLines_buildings_3',
+                radius: 10.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -163,36 +135,101 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_historic_edmontonRWLines_buildings_2');
-        map.getPane('pane_historic_edmontonRWLines_buildings_2').style.zIndex = 402;
-        map.getPane('pane_historic_edmontonRWLines_buildings_2').style['mix-blend-mode'] = 'normal';
-        var layer_historic_edmontonRWLines_buildings_2 = new L.geoJson(json_historic_edmontonRWLines_buildings_2, {
+        map.createPane('pane_historic_edmontonRWLines_buildings_3');
+        map.getPane('pane_historic_edmontonRWLines_buildings_3').style.zIndex = 403;
+        map.getPane('pane_historic_edmontonRWLines_buildings_3').style['mix-blend-mode'] = 'normal';
+        var layer_historic_edmontonRWLines_buildings_3 = new L.geoJson(json_historic_edmontonRWLines_buildings_3, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_historic_edmontonRWLines_buildings_2',
-            layerName: 'layer_historic_edmontonRWLines_buildings_2',
-            pane: 'pane_historic_edmontonRWLines_buildings_2',
-            onEachFeature: pop_historic_edmontonRWLines_buildings_2,
+            dataVar: 'json_historic_edmontonRWLines_buildings_3',
+            layerName: 'layer_historic_edmontonRWLines_buildings_3',
+            pane: 'pane_historic_edmontonRWLines_buildings_3',
+            onEachFeature: pop_historic_edmontonRWLines_buildings_3,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.circleMarker(latlng, style_historic_edmontonRWLines_buildings_2_0(feature));
+                return L.circleMarker(latlng, style_historic_edmontonRWLines_buildings_3_0(feature));
             },
         });
-        bounds_group.addLayer(layer_historic_edmontonRWLines_buildings_2);
-        map.addLayer(layer_historic_edmontonRWLines_buildings_2);
+        bounds_group.addLayer(layer_historic_edmontonRWLines_buildings_3);
+        map.addLayer(layer_historic_edmontonRWLines_buildings_3);
+        function pop_Annexation_History_Polygon_4(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ANNEX_ID'] !== null ? autolinker.link(feature.properties['ANNEX_ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['YEAR'] !== null ? autolinker.link(feature.properties['YEAR'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ANNEX_DATE'] !== null ? autolinker.link(feature.properties['ANNEX_DATE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['INFO'] !== null ? autolinker.link(feature.properties['INFO'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['AREA_KM2'] !== null ? autolinker.link(feature.properties['AREA_KM2'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ORDER_NO'] !== null ? autolinker.link(feature.properties['ORDER_NO'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Annexation_History_Polygon_4_0() {
+            return {
+                pane: 'pane_Annexation_History_Polygon_4',
+                interactive: true,
+            }
+        }
+        function style_Annexation_History_Polygon_4_1() {
+            return {
+                pane: 'pane_Annexation_History_Polygon_4',
+                opacity: 1,
+                color: 'rgba(55,126,184,0.8059999999999999)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 8.0, 
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Annexation_History_Polygon_4');
+        map.getPane('pane_Annexation_History_Polygon_4').style.zIndex = 404;
+        map.getPane('pane_Annexation_History_Polygon_4').style['mix-blend-mode'] = 'normal';
+        var layer_Annexation_History_Polygon_4 = new L.geoJson.multiStyle(json_Annexation_History_Polygon_4, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Annexation_History_Polygon_4',
+            layerName: 'layer_Annexation_History_Polygon_4',
+            pane: 'pane_Annexation_History_Polygon_4',
+            onEachFeature: pop_Annexation_History_Polygon_4,
+            styles: [style_Annexation_History_Polygon_4_0,style_Annexation_History_Polygon_4_1,]
+        });
+        bounds_group.addLayer(layer_Annexation_History_Polygon_4);
+        map.addLayer(layer_Annexation_History_Polygon_4);
+        var osmGeocoder = new L.Control.Geocoder({
+            collapsed: true,
+            position: 'topleft',
+            text: 'Search',
+            title: 'Testing'
+        }).addTo(map);
+        document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
+        .className += ' fa fa-search';
+        document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
+        .title += 'Search for a place';
         var baseMaps = {};
-        L.control.layers(baseMaps,{'<img src="legend/historic_edmontonRWLines_buildings_2.png" /> historic_edmonton RWLines_buildings': layer_historic_edmontonRWLines_buildings_2,'<img src="legend/Annexation_History_Polygon_1.png" /> Annexation_History_Polygon': layer_Annexation_History_Polygon_1,"OSM Standard": layer_OSMStandard_0,}).addTo(map);
+        L.control.layers(baseMaps,{'<img src="legend/Annexation_History_Polygon_4.png" /> Annexation_History_Polygon': layer_Annexation_History_Polygon_4,'<img src="legend/historic_edmontonRWLines_buildings_3.png" /> historic_edmonton RWLines_buildings': layer_historic_edmontonRWLines_buildings_3,"Plan_Edmonton_Settlement_1882_world-merc_10m-px": layer_Plan_Edmonton_Settlement_1882_worldmerc_10mpx_2,"Edmonton+Strathcona_1907_world-merc_10m-px": layer_EdmontonStrathcona_1907_worldmerc_10mpx_1,"Edmonton_Sectional_315_1920_world-merc_30m-px_crop": layer_Edmonton_Sectional_315_1920_worldmerc_30mpx_crop_0,}).addTo(map);
         setBounds();
-        map.addControl(new L.Control.Search({
-            layer: layer_historic_edmontonRWLines_buildings_2,
-            initial: false,
-            hideMarkerOnCollapse: true,
-            propertyName: 'Name of Historic Resource'}));
-        document.getElementsByClassName('search-button')[0].className +=
-         ' fa fa-binoculars';
+        L.ImageOverlay.include({
+            getBounds: function () {
+                return this._bounds;
+            }
+        });
         </script>
     </body>
 </html>
