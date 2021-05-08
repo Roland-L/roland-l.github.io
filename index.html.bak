@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-123656995-1"></script>
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-123656995-1"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -12,73 +11,89 @@
 
       gtag('config', 'UA-123656995-1');
     </script>
-
-    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Roland’s Personal Website</title>
     <meta name="description" content="The personal website for Roland Lines.">
     <link rel="stylesheet" href="main.css">
-</head>
-
-<body>
+  </head>
+  <body>
     <ul class="topnav">
-        <li><a class="active" href="#home">Home</a></li>
-        <li><a href="#online">Online Projects</a></li>
-        <li><a href="#maps">Maps</a></li>
-        <li><a href="#editing">Editing</a></li>
-        <li><a href="#Writing">Writing</a></li>
+      <li><a class="active" href="#home">Home</a></li>
+      <li><a href="#online">Online Projects</a></li>
+      <li><a href="#maps">Maps</a></li>
+      <li><a href="#editing">Editing</a></li>
+      <li><a href="#Writing">Writing</a></li>
     </ul>
     <div>
-        <h1>Welcome to my personal website</h1>
+      <h1>Welcome to my personal website</h1>
     </div>
     <div>
-        <h2 id="online">Online Projects</h2>
-        <h3>Edmonton Architecture by Roland Walter Lines</h3>
-        <p><a target="_blank" href="/RWLines_architecture/index.html">Leaflet webmap
-           </a>
-        </p>
+      <h2 id="online">Online Projects</h2>
+      <h3>Edmonton Architecture by Roland Walter Lines</h3>
+      <p><a target="_blank" href="/RWLines_architecture/index.html">Leaflet
+          webmap </a> </p>
     </div>
     <div class="row">
-        <h2 id="maps">Maps</h2>
-        <div class="column">
-            <p><a target="_blank" href="/images/mackenzie-river-basin_northern-lifeblood-report.jpg">
-                   <img alt="Mackenzie River Basin" src="/images/mackenzie-river-basin_northern-lifeblood-report.jpg" height="200" float="left">
-               </a>
-            </p>
-            <p><a target="_blank" href="/images/mackenzie-river-basin_northern-lifeblood-report.jpg">
-                   <em>Mackenzie River Basin</em>
-               </a>
-            </p>
-        </div>
-        <div class="column">
-            <p><a target="_blank" href="/images/fig-2-in-situ-oil-sands-report-card.jpg">
-                   <img alt="Oil Sands Projects" src="/images/fig-2-in-situ-oil-sands-report-card.jpg" height="200" float="left">
-               </a>
-            </p>
-            <p><a target="_blank" href="/images/fig-2-in-situ-oil-sands-report-card.jpg">
-                   <em>Alberta oil sands projects</em>
-               </a>
-            </p>
-        </div>
-        <div class="column">
-            <p><a target="_blank" href="/images/fig-8-upgrader-alley.jpg">
-                   <img alt="Upgrader Alley map" src="/images/fig-8-upgrader-alley.jpg" height="200" float="left">
-               </a>
-            </p>
-            <p><a target="_blank" href="/images/fig-8-upgrader-alley.jpg">
-                   <em>Map of Upgrader Alley</em>
-               </a>
-            </p>
-        </div>
+      <h2 id="maps">Maps</h2>
+      <div class="column">
+        <p><a target="_blank" href="/images/mackenzie-river-basin_northern-lifeblood-report.jpg">
+            <img alt="Mackenzie River Basin" src="/images/mackenzie-river-basin_northern-lifeblood-report.jpg"
+              float="left"
+              height="200">
+          </a> </p>
+        <p><a target="_blank" href="/images/mackenzie-river-basin_northern-lifeblood-report.jpg">
+            <em>Mackenzie River Basin</em> </a> </p>
+      </div>
+      <div class="column">
+        <p><a target="_blank" href="/images/fig-2-in-situ-oil-sands-report-card.jpg">
+            <img alt="Oil Sands Projects" src="/images/fig-2-in-situ-oil-sands-report-card.jpg"
+              float="left"
+              height="200">
+          </a> </p>
+        <p><a target="_blank" href="/images/fig-2-in-situ-oil-sands-report-card.jpg">
+            <em>Alberta oil sands projects</em> </a> </p>
+      </div>
+      <div class="column">
+        <p><a target="_blank" href="/images/fig-8-upgrader-alley.jpg"> <img alt="Upgrader Alley map"
+              src="/images/fig-8-upgrader-alley.jpg"
+              float="left"
+              height="200">
+          </a> </p>
+        <p><a target="_blank" href="/images/fig-8-upgrader-alley.jpg"> <em>Map
+              of Upgrader Alley</em> </a> </p>
+      </div>
     </div>
+    <div class="row">
     <h2 id="editing">Editing</h2>
     <h3>Books</h3>
-    <p> </p>
+      <div class="column">
+    <p><a target="_blank" href="https://www.google.ca/books/edition/The_Canadian_Mountaineering_Anthology/V6kNHQAACAAJ?hl=en">
+        <img alt="Canadian Mountaineering Anthology" src="https://books.google.com/books/content?id=V6kNHQAACAAJ&amp;printsec=frontcover&amp;img=1&amp;zoom=1"
+          float="left"
+          height="100">
+      </a></p>
+    <p><a target="_blank" href="https://www.google.ca/books/edition/The_Canadian_Mountaineering_Anthology/V6kNHQAACAAJ?hl=en">
+        <em>The Canadian Mountaineering Anthology</em></a></p>
+      </div>
+      <div class="column">
+    <p><a target="_blank" href="https://www.google.ca/books/edition/Running/TYURHQAACAAJ?hl=en">
+        <img alt="Running Start to Finish" src="data:image/jpeg;base64,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"
+          float="left"
+          height="100">
+      </a> </p>
+    <p><a target="_blank" href="https://www.google.ca/books/edition/Running/TYURHQAACAAJ?hl=en">
+        <em>Running: Start to Finish</em></a></p>
+    </div>
+    </div>
+    <div class="row">
     <h3>Technical Reports</h3>
+    </div>
+    <div class="row">
     <h2 id="writing">Writing</h2>
-    <p><img alt="Bat Mobile story, New Trail magazine" src="/images/bat-mobile--newtrail-summer-2005.jpg" height="400"></p>
-    <p><img alt="Lightbox story, New Trail magazine" src="/images/lightbox--newtrail-winter-2004-05.jpg" height="400"></p>
-
-</body>
-
+    <p><img alt="Bat Mobile story, New Trail magazine" src="/images/bat-mobile--newtrail-summer-2005.jpg"
+        height="400"></p>
+    <p><img alt="Lightbox story, New Trail magazine" src="/images/lightbox--newtrail-winter-2004-05.jpg"
+        height="400"></p>
+    </div>
+  </body>
 </html>
